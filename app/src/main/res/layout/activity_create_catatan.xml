@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    tools:context=".CreateCatatan">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambahkan Catatan"
+        android:id="@+id/textJudul"
+        android:textSize="25dp"
+        android:layout_marginBottom="55dp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:id="@+id/textT"
+        android:textSize="16dp"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/title"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Isi Judul Catatan"
+        android:layout_below="@+id/textJudul"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/title"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Content"
+        android:id="@+id/textC"
+        android:textSize="16dp"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/content"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Isi Deskripsi Catatan"
+        android:id="@+id/content"
+        android:layout_below="@+id/title"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Simpan Catatan"
+        android:id="@+id/buttonSave"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/content"
+        />
+
+</RelativeLayout>
