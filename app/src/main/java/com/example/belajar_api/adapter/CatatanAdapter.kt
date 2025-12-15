@@ -9,9 +9,14 @@ import com.example.belajar_api.entity.Catatan
 
 class CatatanAdapter (
 
-    private val dataset: MutableList<Catatan>
+    private val dataset: MutableList<Catatan>,
+    private val events: CatatanItemEvents
 
 ): RecyclerView.Adapter<CatatanAdapter.CatatanViewHolder>() {
+
+    interface CatatanItemEvents {
+        fun onEdit(catatan: Catatan)
+    }
     inner class CatatanViewHolder(
         val view: ItemCatatanBinding
     ): RecyclerView.ViewHolder(view.root) {

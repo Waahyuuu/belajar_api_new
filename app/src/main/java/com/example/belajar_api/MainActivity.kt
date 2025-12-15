@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.belajar_api.adapter.CatatanAdapter
 import com.example.belajar_api.api.ApiClient
 import com.example.belajar_api.databinding.ActivityMainBinding
+import com.example.belajar_api.entity.Catatan
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 
@@ -37,7 +38,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupEvents() {
-        adapter = CatatanAdapter(mutableListOf())
+        adapter = CatatanAdapter(mutableListOf(), object : CatatanAdapter.CatatanItemEvents{
+            override fun onEdit(catatan: Catatan) {
+                val intent = Intent(this@MainActivity, EditCatatanActivity::class.java)
+                intent.putExtra("id_catatan", catatan.id)
+
+                startActivity(intent)
+            }
+
+        })
+
         binding.container.adapter = adapter
         binding.container.layoutManager = LinearLayoutManager(this)
     }
