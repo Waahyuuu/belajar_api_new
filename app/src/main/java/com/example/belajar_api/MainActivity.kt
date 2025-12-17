@@ -50,6 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.container.adapter = adapter
         binding.container.layoutManager = LinearLayoutManager(this)
+
+        binding.btnNavigate.setOnClickListener {
+            val intent = Intent(this, CreateCatatan::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
@@ -78,11 +83,4 @@ class MainActivity : AppCompatActivity() {
     fun displayMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
-//    fun setupEvents() {
-//        binding.btnNavigate.setOnClickListener {
-//            val intent = Intent(this, CreateCatatan::class.java)
-//            startActivity(intent)
-//        }
-//    }
 }

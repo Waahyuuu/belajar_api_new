@@ -18,6 +18,6 @@ interface CatatanRepository {
     @GET("catatan/{id}")
     suspend fun getCatatan(@Path("id") id: Int): Response<Catatan>
 
-    @PUT("catatan/{id)")
+    @PUT("catatan/{id}")
     suspend fun editCatatan(@Path("id") id: Int, @Body catatan: Catatan): Response<Catatan>
 }

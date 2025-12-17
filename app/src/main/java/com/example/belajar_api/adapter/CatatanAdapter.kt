@@ -24,6 +24,10 @@ class CatatanAdapter (
             view.title.text = data.title
             view.content.text = data.content
             view.userId.text = data.user_id.toString()
+
+            view.root.setOnClickListener {
+                events.onEdit(data)
+            }
         }
     }
 
@@ -46,7 +50,7 @@ class CatatanAdapter (
         holder.setDataUI(dataSekarang)
     }
 
-    @SuppressLint("NotifyDataSetChaged")
+    @SuppressLint("NotifyDataSetChanged")
     fun updateDataset(dataBaru: List<Catatan>) {
         dataset.clear()
         dataset.addAll(dataBaru)
