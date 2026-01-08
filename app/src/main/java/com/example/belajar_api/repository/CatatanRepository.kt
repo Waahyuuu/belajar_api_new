@@ -23,5 +23,5 @@ interface CatatanRepository {
     suspend fun editCatatan(@Path("id") id: Int, @Body catatan: Catatan): Response<Catatan>
 
     @DELETE("catatan/{id}")
-    suspend fun deleteCatatan(@Path("id") id: Int?): Response<Map<String, String>>
+    suspend fun deleteCatatan(@Path("id") id: Int?): Response<Catatan>
 }
