@@ -1,8 +1,8 @@
 package com.example.belajar_api
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +15,6 @@ import com.example.belajar_api.api.ApiClient
 import com.example.belajar_api.databinding.ActivityMainBinding
 import com.example.belajar_api.entity.Catatan
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +43,17 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("id_catatan", catatan.id)
 
                 startActivity(intent)
+            }
+
+            override fun onDelete(catatan: Catatan) {
+                AlertDialog.Builder(this@MainActivity)
+                    .setTitle("Hapus Catatan")
+                    .setMessage("Apakah ingin menghapus catatan ini?")
+                    .setPositiveButton("Ya") { _, _ ->
+                        deleteCatatan(catatan.id)
+                    }
+                    .setNegativeButton("Batal", null)
+                    .show()
             }
 
         })
@@ -82,5 +92,19 @@ class MainActivity : AppCompatActivity() {
 
     fun displayMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun deleteCatatan(id: Int?) {
+        lifecycleScope.launch {
+            val response = ApiClient.catatanRepository.deleteCatatan(id)
+
+            if (!response.isSuccessful) {
+                displayMessage("Gagal menghapus catatan")
+                return@launch
+            }
+
+            displayMessage("Catatan berhasil dihapus")
+            loadData()
+        }
     }
 }
